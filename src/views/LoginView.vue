@@ -32,6 +32,7 @@
 
 <script>
 import axios from 'axios'
+
 export default {
   name: 'Login',
   data() {
@@ -50,11 +51,11 @@ export default {
       document.getElementById('signupFullfilled').style.display = "none";
 
       if (this.input.username != "" && this.input.password != "") {
-        axios.post("http://rienstor.no-ip.org:3000/api/user/login", {
+        axios.post(process.env.VUE_APP_HOST_URL + "/api/user/login", {
             username: this.input.username,
             password: this.input.password
           })
-          .then(resp => {
+          .then(_ => {
             this.$emit("authenticated", true);
             this.$router.replace({
               name: "current"
@@ -74,11 +75,11 @@ export default {
       document.getElementById('signupFullfilled').style.display = "none";
 
       if (this.input.username != "" && this.input.password != "") {
-        axios.post("http://rienstor.no-ip.org:3000/api/user/signup", {
+        axios.post(process.env.VUE_APP_HOST_URL + "/api/user/signup", {
             username: this.input.username,
             password: this.input.password
           })
-          .then(resp => {
+          .then(_ => {
             this.statusMessage = "User successfully created."
             document.getElementById('signupFullfilled').style.display = "block";
           })

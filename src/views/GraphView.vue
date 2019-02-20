@@ -56,23 +56,27 @@ export default {
     }
   },
   created () {
-    this.getAllWeather();
+    this.getAllWeather().then(_ => {
+      this.createAverageArrays();
+      this.createRecordAmountArray();
+      this.createDayPartArrays();
+    })
   },
   methods: {
     getAllWeather: function () {
-      axios.get("http://rienstor.no-ip.org:3000/api/weather/all")
-      .then((resp) => {
-        this.bmp280 = resp.data.BMP280
-        this.dht11 = resp.data.DHT11
-        this.ds18b20 = resp.data.DS18B20
-        this.openweather = resp.data.Openweather
-        console.log("Request done.")
-        this.createAverageArrays();
-        this.createRecordAmountArray();
-        this.createDayPartArrays();
-      })
-      .catch(err => {
-        console.log(err);
+      return new Promise((resolve, reject) => {
+        axios.get(process.env.VUE_APP_HOST_URL + "/api/weather/all")
+        .then((resp) => {
+          this.bmp280 = resp.data.BMP280
+          this.dht11 = resp.data.DHT11
+          this.ds18b20 = resp.data.DS18B20
+          this.openweather = resp.data.Openweather
+          console.log(".")
+          resolve()
+        })
+        .catch(err => {
+          reject(err)
+        })
       })
     },
     createAverageArrays: function () {
@@ -256,7 +260,4 @@ export default {
   }
 }
 
-@media (max-width: 420px) {
-
-}
 </style>

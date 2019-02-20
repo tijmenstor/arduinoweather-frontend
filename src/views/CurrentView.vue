@@ -145,7 +145,7 @@ export default {
   },
   methods: {
     getCurrentWeather: function () {
-      axios.get("http://rienstor.no-ip.org:3000/api/weather/now")
+      axios.get(process.env.VUE_APP_HOST_URL + "/api/weather/now")
       .then((resp) => {
         this.bmp280 = resp.data.BMP280[0]
         this.dht11 = resp.data.DHT11[0]
