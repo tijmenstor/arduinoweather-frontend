@@ -92,7 +92,7 @@ export default {
   .image-container img {
     width: 100%;
     height: 150px;
-    object-fit: cover;rem
+    object-fit: cover;
     position: relative;
   }
 }
