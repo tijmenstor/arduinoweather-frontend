@@ -9,7 +9,7 @@
     "prod": "npm run build && http-server dist"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "bootstrap-vue": "^2.0.0-rc.11",
     "chart.js": "^2.7.3",
     "dotenv": "^6.2.0",
