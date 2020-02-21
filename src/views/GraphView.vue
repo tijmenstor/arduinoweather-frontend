@@ -65,7 +65,7 @@ export default {
   methods: {
     getAllWeather: function () {
       return new Promise((resolve, reject) => {
-        axios.get("api/weather/all")
+        axios.get("/api/weather/all")
         .then((resp) => {
           this.bmp280 = resp.data.BMP280;
           this.dht11 = resp.data.DHT11;

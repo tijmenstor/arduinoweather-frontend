@@ -16,7 +16,7 @@ export default new Router({
       component: CurrentView
     },
     {
-      path: '/graph',
+      path: '/graphs',
       name: 'graph',
       component: GraphView
     }
