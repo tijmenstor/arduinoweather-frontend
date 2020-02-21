@@ -145,12 +145,12 @@ export default {
   },
   methods: {
     getCurrentWeather: function () {
-      axios.get(process.env.VUE_APP_HOST_URL + "/api/weather/now")
+      axios.get("/api/weather/now")
       .then((resp) => {
-        this.bmp280 = resp.data.BMP280[0]
-        this.dht11 = resp.data.DHT11[0]
-        this.ds18b20 = resp.data.DS18B20[0]
-        this.openweather = resp.data.Openweather[0]
+        this.bmp280 = resp.data.BMP280[0];
+        this.dht11 = resp.data.DHT11[0];
+        this.ds18b20 = resp.data.DS18B20[0];
+        this.openweather = resp.data.Openweather[0];
         this.insideAverage = Math.round(((this.bmp280.temperature + this.dht11.temperature + this.ds18b20.temperature) / 3)* 100) / 100 //What a beauty
         console.log("Request done.")
       })
@@ -165,6 +165,10 @@ export default {
 <style>
 .house-temperature-mobile {
   display: none;
+}
+
+.card {
+  height: 100%;
 }
 
 .card-header {

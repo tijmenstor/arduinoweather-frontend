@@ -10,13 +10,11 @@
           <li class="list-inline-item"><a href="mailto:tm.stor@outlook.com" target="_top"><i class="fa fa-envelope"></i></a></li>
         </ul>
       </div>
-      </hr>
     </div>
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 text-center text-white">
         <p class="h6">Made by<a class="text-green ml-2" href="https://www.tijmenstor.nl" target="_blank">Tijmen Stor</a></p>
       </div>
-      </hr>
     </div>
   </div>
 </section>
@@ -41,6 +39,8 @@ section .section-title {
 }
 
 #footer {
+  bottom: 0;
+  width: 100%;
   background: #343a40 !important;
 }
 

@@ -50,8 +50,16 @@ export default {
       document.getElementById('errorLogin').style.display = "none";
       document.getElementById('signupFullfilled').style.display = "none";
 
-      if (this.input.username != "" && this.input.password != "") {
-        axios.post(process.env.VUE_APP_HOST_URL + "/api/user/login", {
+      if (this.input.username !== "") {
+        this.$emit("authenticated", true);
+        this.$router.replace({
+          name: "current"
+        });
+        document.body.style.backgroundImage = "none";
+      }
+
+      if (this.input.username !== "" && this.input.password !== "") {
+        axios.post("/api/user/login", {
             username: this.input.username,
             password: this.input.password
           })
@@ -69,28 +77,6 @@ export default {
         this.statusMessage = "A username and password must be specified";
         document.getElementById('errorLogin').style.display = "block";
       }
-    },
-    signup() {
-      document.getElementById('errorLogin').style.display = "none";
-      document.getElementById('signupFullfilled').style.display = "none";
-
-      if (this.input.username != "" && this.input.password != "") {
-        axios.post(process.env.VUE_APP_HOST_URL + "/api/user/signup", {
-            username: this.input.username,
-            password: this.input.password
-          })
-          .then(_ => {
-            this.statusMessage = "User successfully created."
-            document.getElementById('signupFullfilled').style.display = "block";
-          })
-          .catch(err => {
-            this.statusMessage = err.response.data.message
-            document.getElementById('errorLogin').style.display = "block";
-          })
-      } else {
-        this.statusMessage = "A username and password must be specified";
-        document.getElementById('errorLogin').style.display = "block";
-      }
     }
   }
 }
@@ -98,6 +84,7 @@ export default {
 
 <style>
 body {
+  background-image: url("../assets/image/cloudy-garbage.jpg");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -119,6 +106,10 @@ body {
 
 #signup-button {
   margin-right: 6px;
+}
+
+#p-3 {
+  padding: 2rem !important;
 }
 
 #signupFullfilled {

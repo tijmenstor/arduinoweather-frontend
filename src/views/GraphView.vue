@@ -65,12 +65,12 @@ export default {
   methods: {
     getAllWeather: function () {
       return new Promise((resolve, reject) => {
-        axios.get(process.env.VUE_APP_HOST_URL + "/api/weather/all")
+        axios.get("api/weather/all")
         .then((resp) => {
-          this.bmp280 = resp.data.BMP280
-          this.dht11 = resp.data.DHT11
-          this.ds18b20 = resp.data.DS18B20
-          this.openweather = resp.data.Openweather
+          this.bmp280 = resp.data.BMP280;
+          this.dht11 = resp.data.DHT11;
+          this.ds18b20 = resp.data.DS18B20;
+          this.openweather = resp.data.Openweather;
           console.log(".")
           resolve()
         })
@@ -91,8 +91,8 @@ export default {
       let i = 0;
       temperatureArray.forEach(tempObject => {
         if (!dailyArray.includes(tempObject.date.substring(0,10))) {
-          if(dailyTemps != 0) {
-            tempArray.push(Math.round((dailyTemps/i)*100)/100)
+          if(dailyTemps !== 0) {
+            tempArray.push(Math.round((dailyTemps/i)*100)/100);
             dailyTemps = 0;
             i = 0;
           }

@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import HeaderNavBar from '@/components/HeaderNavBar.vue'
-import Footer from '@/components/Footer.vue'
+  import HeaderNavBar from '@/components/HeaderNavBar.vue'
+  import Footer from '@/components/Footer.vue'
 
 export default {
   name: 'home',
@@ -33,9 +33,7 @@ export default {
 </script>
 
 <style>
-body {
-  background: white;
-}
+
 .background-image {
   max-width: 100%;
   height: auto;
@@ -94,7 +92,7 @@ body {
   .image-container img {
     width: 100%;
     height: 150px;
-    object-fit: cover;
+    object-fit: cover;rem
     position: relative;
   }
 }

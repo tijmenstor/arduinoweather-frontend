@@ -101,3 +101,6 @@ node_modules
 .DS_Store
 
 # End of https://www.gitignore.io/api/vue,node,vuejs
+
+.idea/
+dist/

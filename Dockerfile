@@ -1,13 +1,16 @@
-FROM node:8-slim
+FROM node:10-slim AS builder
 
 WORKDIR /usr/src/app
 
-COPY package.json ./
+COPY package.json package-lock.json ./
 
-RUN node --max_old_space_size=1024 $(which npm) install --silent
+RUN npm install --silent
 
 COPY . .
 
-EXPOSE 8080
+RUN npm run build
 
-CMD ["npm", "run", "serve"]
+# New container instance to serve the produced HTML/JS/CSS on a Nginx webserver
+FROM nginx:alpine
+
+COPY --from=builder /usr/src/app/dist /usr/share/nginx/html
